@@ -31,3 +31,17 @@ resource "github_repository" "core_cloud_repositories" {
   allow_squash_merge = true
   allow_rebase_merge = true # TODO: Do we actually want to allow this?
 }
+
+resource "github_team_repository" "core_cloud_admin_team_repositories" {
+  for_each = local.repositories
+  repository = each.key
+  team_id = data.github_team.core_cloud_admin.id
+  permission = "admin"
+}
+
+resource "github_team_repository" "core_cloud_devops_team_repositories" {
+  for_each = local.repositories
+  repository = each.key
+  team_id = data.github_team.core_cloud_devops.id
+  permission = "push"
+}

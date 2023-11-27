@@ -1,0 +1,32 @@
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate Terraform
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_OWNER: ukhomeoffice
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ~1.6.0
+
+      - name: Terraform Init
+        run: terraform init -reconfigure -backend-config="bucket=${{ secrets.TF_BUCKET }}" -backend-config="region=${{ secrets.TF_BUCKET_REGION }}" -backend-config="access_key=<<TODO>>"  -backend-config="secret_key=<<TODO>>"
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Terraform Plan
+        run: terraform plan

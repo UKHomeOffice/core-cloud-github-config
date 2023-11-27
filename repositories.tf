@@ -29,7 +29,7 @@ resource "github_repository" "core_cloud_repositories" {
   has_downloads      = false
   allow_merge_commit = false
   allow_squash_merge = true
-  allow_rebase_merge = true # TODO: Do we actually want to allow this?
+  allow_rebase_merge = false
 }
 
 resource "github_team_repository" "core_cloud_admin_team_repositories" {

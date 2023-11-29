@@ -79,3 +79,23 @@ resource "github_branch_protection" "main" {
     github_repository.core_cloud_repositories
   ]
 }
+
+resource "github_actions_repository_permissions" "core_cloud_repositories" {
+  for_each = local.repositories
+  repository = github_repository.core_cloud_repositories[each.key].node_id
+
+  allowed_actions = "selected"
+  enabled = true
+
+  allowed_actions_config {
+    github_owned_allowed = true
+    verified_allowed = true
+    patterns_allowed = [
+      "aws-actions/*"
+    ]
+  }
+
+  depends_on = [
+    github_repository.core_cloud_repositories
+  ]
+}

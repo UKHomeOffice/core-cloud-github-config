@@ -41,6 +41,10 @@ resource "github_team_repository" "core_cloud_admin_team_repositories" {
   repository = each.key
   team_id = data.github_team.core_cloud_admin.id
   permission = "admin"
+
+  depends_on = [
+    github_repository.core_cloud_repositories
+  ]
 }
 
 resource "github_team_repository" "core_cloud_devops_team_repositories" {
@@ -48,4 +52,8 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
   repository = each.key
   team_id = data.github_team.core_cloud_devops.id
   permission = "push"
+
+  depends_on = [
+    github_repository.core_cloud_repositories
+  ]
 }

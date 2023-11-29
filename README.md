@@ -18,8 +18,9 @@ Each repository has a number of configurable settings. These can be altered by a
 
 The following settings are currently configurable:
 
-| Setting    | Description                      | Default |
-|------------|----------------------------------|---------|
-| visibility | The visibility of the repository | private |
+| Setting                                           | Description                                             | Default |
+|---------------------------------------------------|---------------------------------------------------------|---------|
+| visibility                                        | The visibility of the repository                        | private |
+| branch_protection.required_approving_review_count | The number of approving reviews required before merging | 1       |
 
 It is designed so that additional settings can be added as required, with sensible defaults provided.

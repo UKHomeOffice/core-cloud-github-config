@@ -1,10 +1,22 @@
 locals {
+  default_repo = {
+    visibility = "private"
+
+    branch_protection = {
+      required_approving_review_count = 1 # TODO: default to one reviewer except for repositories that need additional scrutiny
+    }
+  }
+
   repository_config = {
     "core-cloud" = {
       visibility = "public"
     },
     "core-cloud-lza-config" = {
       visibility = "internal"
+
+      branch_protection = {
+        required_approving_review_count = 2
+      }
     },
     "core-cloud-github-config" = {
       visibility = "public"
@@ -13,9 +25,7 @@ locals {
 
   # Sets the default of specific values if the object key is not set.
   repositories = {
-    for k, v in local.repository_config : k => {
-      visibility = try(v.visibility, "private")
-    }
+    for k, v in local.repository_config : k => merge(local.default_repo, v)
   }
 }
 
@@ -72,7 +82,7 @@ resource "github_branch_protection" "main" {
   required_pull_request_reviews {
     dismiss_stale_reviews = true
     require_last_push_approval = true # TODO: this is not in the AC but feels appropriate
-    required_approving_review_count = 1 # TODO: should this be 1/2, I think some repositories we would want this to be 2 but not all to keep pace.
+    required_approving_review_count = each.value.branch_protection.required_approving_review_count
   }
 
   depends_on = [

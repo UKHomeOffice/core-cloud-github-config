@@ -41,7 +41,7 @@ jobs:
           terraform init -reconfigure \
           -backend-config="bucket=${{ secrets.TF_BUCKET }}" \
           -backend-config="region=${{ secrets.TF_BUCKET_REGION }}" \
-          -backend-config="access_key=${{ steps.aws-credentials.outputs.aws-access-key-id }}"
+          -backend-config="access_key=${{ steps.aws-credentials.outputs.aws-access-key-id }}" \
           -backend-config="secret_key=${{ steps.aws-credentials.outputs.aws-secret-access-key }}"
 
       - name: Terraform Validate

@@ -57,3 +57,25 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
     github_repository.core_cloud_repositories
   ]
 }
+
+resource "github_branch_protection" "main" {
+  for_each = local.repositories
+  repository_id = github_repository.core_cloud_repositories[each.key].node_id
+
+  pattern       = "main"
+  enforce_admins = true
+  required_linear_history = true
+  require_conversation_resolution = true
+  allows_force_pushes = false
+  allows_deletions = false
+
+  required_pull_request_reviews {
+    dismiss_stale_reviews = true
+    require_last_push_approval = true # TODO: this is not in the AC but feels appropriate
+    required_approving_review_count = 1 # TODO: should this be 1/2, I think some repositories we would want this to be 2 but not all to keep pace.
+  }
+
+  depends_on = [
+    github_repository.core_cloud_repositories
+  ]
+}

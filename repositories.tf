@@ -78,8 +78,7 @@ resource "github_branch_protection" "main" {
   allows_deletions = false
 
   required_pull_request_reviews {
-    dismiss_stale_reviews = true
-    require_last_push_approval = true # TODO: this is not in the AC but feels appropriate
+    require_last_push_approval = true
     required_approving_review_count = each.value.branch_protection.required_approving_review_count
   }
 

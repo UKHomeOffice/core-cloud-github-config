@@ -31,7 +31,6 @@ jobs:
           terraform_version: ~1.6.0
 
       - name: Configure AWS Credentials
-        id: aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformAssumption-Role
@@ -39,7 +38,6 @@ jobs:
           aws-region: eu-west-2
 
       - name: Configure AWS Credentials
-        id: aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: eu-west-2

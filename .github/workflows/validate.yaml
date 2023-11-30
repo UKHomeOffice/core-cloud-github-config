@@ -30,7 +30,7 @@ jobs:
         id: aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformConfigState-Role
+          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformReadState-Role
           role-session-name: GitHubActions
           aws-region: eu-west-2
           retry-max-attempts: 5

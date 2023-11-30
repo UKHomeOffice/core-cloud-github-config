@@ -1,20 +1,20 @@
 locals {
   default_repo = {
     branch_protection = {
-      required_approving_review_count = 1 # TODO: default to one reviewer except for repositories that need additional scrutiny
+      required_approving_review_count = 2
     }
   }
 
   repository_config = {
     "core-cloud" = {
       visibility = "public"
+
+      branch_protection = {
+        required_approving_review_count = 1
+      }
     },
     "core-cloud-lza-config" = {
       visibility = "internal"
-
-      branch_protection = {
-        required_approving_review_count = 2
-      }
     },
     "core-cloud-github-config" = {
       visibility = "public"

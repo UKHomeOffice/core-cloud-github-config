@@ -10,7 +10,4 @@ terraform {
   }
 }
 
-provider "github" {
-  owner = "UKHomeOffice" # TODO: this may want to be sourced from the `GITHUB_OWNER` action environment variable
-  token = "" # TODO: this should be passed through as a environment variable in the action `GITHUB_TOKEN`
-}
+provider "github" { }

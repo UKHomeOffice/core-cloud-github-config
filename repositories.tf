@@ -1,7 +1,5 @@
 locals {
   default_repo = {
-    visibility = "private"
-
     branch_protection = {
       required_approving_review_count = 1 # TODO: default to one reviewer except for repositories that need additional scrutiny
     }

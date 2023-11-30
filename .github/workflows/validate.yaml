@@ -33,17 +33,10 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformAssumption-Role
-          role-session-name: GitHubActions
-          aws-region: eu-west-2
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: eu-west-2
           role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformReadState-Role
-          role-session-name: TerraformRead
-          role-chaining: true
+          role-session-name: GitHubActions
+          retry-max-attempts: 5
+          aws-region: eu-west-2
 
       - name: Terraform Init
         run: |

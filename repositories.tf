@@ -45,9 +45,9 @@ resource "github_repository" "core_cloud_repositories" {
 }
 
 resource "github_team_repository" "core_cloud_admin_team_repositories" {
-  for_each = local.repositories
+  for_each   = local.repositories
   repository = each.key
-  team_id = data.github_team.core_cloud_admin.id
+  team_id    = data.github_team.core_cloud_admin.id
   permission = "admin"
 
   depends_on = [
@@ -56,9 +56,9 @@ resource "github_team_repository" "core_cloud_admin_team_repositories" {
 }
 
 resource "github_team_repository" "core_cloud_devops_team_repositories" {
-  for_each = local.repositories
+  for_each   = local.repositories
   repository = each.key
-  team_id = data.github_team.core_cloud_devops.id
+  team_id    = data.github_team.core_cloud_devops.id
   permission = "push"
 
   depends_on = [
@@ -67,18 +67,18 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
 }
 
 resource "github_branch_protection" "main" {
-  for_each = local.repositories
+  for_each      = local.repositories
   repository_id = github_repository.core_cloud_repositories[each.key].node_id
 
-  pattern       = "main"
-  enforce_admins = true
-  required_linear_history = true
+  pattern                         = "main"
+  enforce_admins                  = true
+  required_linear_history         = true
   require_conversation_resolution = true
-  allows_force_pushes = false
-  allows_deletions = false
+  allows_force_pushes             = false
+  allows_deletions                = false
 
   required_pull_request_reviews {
-    require_last_push_approval = true
+    require_last_push_approval      = true
     required_approving_review_count = each.value.branch_protection.required_approving_review_count
   }
 
@@ -88,15 +88,15 @@ resource "github_branch_protection" "main" {
 }
 
 resource "github_actions_repository_permissions" "core_cloud_repositories" {
-  for_each = local.repositories
+  for_each   = local.repositories
   repository = github_repository.core_cloud_repositories[each.key].node_id
 
   allowed_actions = "selected"
-  enabled = true
+  enabled         = true
 
   allowed_actions_config {
     github_owned_allowed = true
-    verified_allowed = true
+    verified_allowed     = true
     patterns_allowed = [
       "aws-actions/*"
     ]

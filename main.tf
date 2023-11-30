@@ -10,4 +10,4 @@ terraform {
   }
 }
 
-provider "github" { }
+provider "github" {}

@@ -30,7 +30,7 @@ jobs:
         id: aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ vars.ACCOUNT_ID }}:role/AWSA-GitHubTerraformConfigState-Role
+          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformConfigState-Role
           role-session-name: GitHubActions
           aws-region: eu-west-2
           retry-max-attempts: 5
@@ -40,7 +40,7 @@ jobs:
         run: |
           terraform init -reconfigure \
           -backend-config="bucket=${{ secrets.TF_BUCKET }}" \
-          -backend-config="region=${{ secrets.TF_BUCKET_REGION }}" \
+          -backend-config="region=eu-west-2" \
           -backend-config="access_key=${{ steps.aws-credentials.outputs.aws-access-key-id }}" \
           -backend-config="secret_key=${{ steps.aws-credentials.outputs.aws-secret-access-key }}"
 

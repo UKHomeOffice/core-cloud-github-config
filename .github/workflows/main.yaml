@@ -27,7 +27,7 @@ jobs:
       - name: Configure AWS IdP Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformAssume-Role
+          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformAllState-Role
           role-session-name: GitHubActions
           retry-max-attempts: 5
           aws-region: eu-west-2
@@ -36,8 +36,7 @@ jobs:
         run: |
           terraform init -reconfigure \
           -backend-config="bucket=${{ secrets.TF_BUCKET }}" \
-          -backend-config="region=eu-west-2" \
-          -backend-config="assume_role={role_arn=\"arn:aws:iam::850744974572:role/AWSA-GitHubTerraformAllState-Role\"}"
+          -backend-config="region=eu-west-2"
 
       - name: Terraform Validate
         run: terraform validate

@@ -9,8 +9,8 @@ locals {
 
   repository_config = {
     "core-cloud" = {
-      visibility = "public"
-      description = "SAS Core Cloud Documentation"
+      visibility   = "public"
+      description  = "SAS Core Cloud Documentation"
       homepage_url = "https://ukhomeoffice.github.io/core-cloud/"
 
       branch_protection = {
@@ -18,11 +18,11 @@ locals {
       }
     },
     "core-cloud-lza-config" = {
-      visibility = "internal"
+      visibility  = "internal"
       description = "SAS Core Cloud LZA Config"
     },
     "core-cloud-github-config" = {
-      visibility = "public"
+      visibility  = "public"
       description = "GitHub repository configuration for Core Cloud repositories"
     }
   }
@@ -34,20 +34,20 @@ locals {
 }
 
 resource "github_repository" "core_cloud_repositories" {
-  for_each           = local.repositories
-  name               = each.key
-  description        = each.value.description
-  visibility         = each.value.visibility
-  has_issues         = false
-  has_projects       = false
-  has_wiki           = false
-  has_downloads      = false
-  allow_merge_commit = false
-  allow_squash_merge = true
-  allow_rebase_merge = false
-  allow_update_branch = true
+  for_each               = local.repositories
+  name                   = each.key
+  description            = each.value.description
+  visibility             = each.value.visibility
+  has_issues             = false
+  has_projects           = false
+  has_wiki               = false
+  has_downloads          = false
+  allow_merge_commit     = false
+  allow_squash_merge     = true
+  allow_rebase_merge     = false
+  allow_update_branch    = true
   delete_branch_on_merge = true
-  homepage_url       = try(each.value.homepage_url, null)
+  homepage_url           = try(each.value.homepage_url, null)
 
   lifecycle {
     prevent_destroy = true

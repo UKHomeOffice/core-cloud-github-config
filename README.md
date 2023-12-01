@@ -16,17 +16,8 @@ only repositories that are explicitly owned by the Core Cloud team are managed.
 
 ### Configurable Settings
 
-Each repository has a number of configurable settings. These can be altered by adding the setting into the required 
+Each repository has a number of configurable settings. These can be altered by adding the setting into the locals 
 repositories object.
-
-The following settings are currently configurable:
-
-| Setting                                           | Description                                             | Required | Default                   |
-|---------------------------------------------------|---------------------------------------------------------|----------|---------------------------|
-| visibility                                        | The visibility of the repository                        | Yes      |                           |
-| description                                       | The description of the repository                       | No       | SAS Core Cloud Repository |
-| homepage_url                                      | The homepage URL of the repository                      | No       |                           |
-| branch_protection.required_approving_review_count | The number of approving reviews required before merging | No       | 2                         |
 
 > Visibility can be one of `public`, `private`, or `internal`. It does not have a default value and must be set on each 
 > repository.

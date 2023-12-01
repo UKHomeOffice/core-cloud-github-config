@@ -41,6 +41,10 @@ resource "github_repository" "core_cloud_repositories" {
 
   lifecycle {
     prevent_destroy = true
+
+    ignore_changes = [
+      pages
+    ]
   }
 }
 

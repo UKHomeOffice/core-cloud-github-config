@@ -46,6 +46,7 @@ resource "github_repository" "core_cloud_repositories" {
   allow_squash_merge     = true
   allow_rebase_merge     = false
   allow_update_branch    = true
+  allow_auto_merge       = true
   delete_branch_on_merge = true
   homepage_url           = try(each.value.homepage_url, null)
 

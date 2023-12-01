@@ -70,7 +70,7 @@ resource "github_team_repository" "core_cloud_admin_team_repositories" {
 }
 
 resource "github_team_repository" "core_cloud_devops_team_repositories" {
-  for_each   = local.repositories
+  for_each   = github_repository.core_cloud_repositories
   repository = each.key
   team_id    = data.github_team.core_cloud_devops.id
   permission = "push"
@@ -81,8 +81,8 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
 }
 
 resource "github_branch_protection" "main" {
-  for_each      = local.repositories
-  repository_id = github_repository.core_cloud_repositories[each.key].node_id
+  for_each      = github_repository.core_cloud_repositories
+  repository_id = each.key
 
   pattern                         = "main"
   enforce_admins                  = true
@@ -93,7 +93,7 @@ resource "github_branch_protection" "main" {
 
   required_pull_request_reviews {
     require_last_push_approval      = true
-    required_approving_review_count = each.value.branch_protection.required_approving_review_count
+    required_approving_review_count = local.repositories[each.key].branch_protection.required_approving_review_count
   }
 
   depends_on = [
@@ -102,8 +102,8 @@ resource "github_branch_protection" "main" {
 }
 
 resource "github_actions_repository_permissions" "core_cloud_repositories" {
-  for_each   = local.repositories
-  repository = github_repository.core_cloud_repositories[each.key].node_id
+  for_each   = github_repository.core_cloud_repositories
+  repository = each.key
 
   allowed_actions = "selected"
   enabled         = true

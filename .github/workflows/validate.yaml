@@ -3,11 +3,6 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
 
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -15,7 +10,6 @@ permissions:
 
 jobs:
   validate:
-    if: github.event.pull_request.draft == false
     name: Validate Terraform
     runs-on: ubuntu-latest
     env:

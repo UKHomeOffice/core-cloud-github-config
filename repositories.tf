@@ -11,6 +11,7 @@ locals {
     "core-cloud" = {
       visibility = "public"
       description = "SAS Core Cloud Documentation"
+      homepage_url = "https://ukhomeoffice.github.io/core-cloud/"
 
       branch_protection = {
         required_approving_review_count = 1
@@ -46,6 +47,7 @@ resource "github_repository" "core_cloud_repositories" {
   allow_rebase_merge = false
   allow_update_branch = true
   delete_branch_on_merge = true
+  homepage_url       = try(each.value.homepage_url, null)
 
   lifecycle {
     prevent_destroy = true

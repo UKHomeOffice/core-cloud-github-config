@@ -1,5 +1,7 @@
 locals {
   default_repo = {
+    description = "SAS Core Cloud Repository"
+
     branch_protection = {
       required_approving_review_count = 2
     }
@@ -8,6 +10,7 @@ locals {
   repository_config = {
     "core-cloud" = {
       visibility = "public"
+      description = "SAS Core Cloud Documentation"
 
       branch_protection = {
         required_approving_review_count = 1
@@ -15,9 +18,11 @@ locals {
     },
     "core-cloud-lza-config" = {
       visibility = "internal"
+      description = "SAS Core Cloud LZA Config"
     },
     "core-cloud-github-config" = {
       visibility = "public"
+      description = "GitHub repository configuration for Core Cloud repositories"
     }
   }
 
@@ -30,6 +35,7 @@ locals {
 resource "github_repository" "core_cloud_repositories" {
   for_each           = local.repositories
   name               = each.key
+  description        = each.value.description
   visibility         = each.value.visibility
   has_issues         = false
   has_projects       = false

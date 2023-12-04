@@ -1,7 +1,5 @@
 locals {
   default_repo = {
-    description = "SAS Core Cloud Repository"
-
     branch_protection = {
       required_approving_review_count = 2
     }

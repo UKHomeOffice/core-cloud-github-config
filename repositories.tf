@@ -47,6 +47,10 @@ resource "github_team_repository" "core_cloud_admin_team_repositories" {
   repository = each.key
   team_id    = data.github_team.core_cloud_admin.id
   permission = "admin"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "github_team_repository" "core_cloud_devops_team_repositories" {
@@ -54,6 +58,10 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
   repository = each.key
   team_id    = data.github_team.core_cloud_devops.id
   permission = "push"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "github_branch_protection" "main" {
@@ -72,6 +80,10 @@ resource "github_branch_protection" "main" {
     require_last_push_approval      = true
     required_approving_review_count = 1
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "github_actions_repository_permissions" "core_cloud_repositories" {
@@ -88,5 +100,9 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
       "aws-actions/*",
       "hashicorp/*"
     ]
+  }
+
+  lifecycle {
+    prevent_destroy = true
   }
 }

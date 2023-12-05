@@ -1,0 +1,48 @@
+name: Apply Terraform Configuration
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  validate-plan-apply:
+    name: Terraform Validate, Plan, and Apply
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_OWNER: ukhomeoffice
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ~1.6.0
+
+      - name: Configure AWS IdP Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::850744974572:role/AWSA-GitHubTerraformAllState-Role
+          role-session-name: GitHubActions
+          retry-max-attempts: 5
+          aws-region: eu-west-2
+
+      - name: Terraform Init
+        run: |
+          terraform init -reconfigure \
+          -backend-config="bucket=${{ secrets.TF_BUCKET }}" \
+          -backend-config="region=eu-west-2"
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan

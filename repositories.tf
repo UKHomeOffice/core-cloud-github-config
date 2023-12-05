@@ -64,6 +64,7 @@ resource "github_branch_protection" "main" {
   enforce_admins                  = true
   required_linear_history         = true
   require_conversation_resolution = true
+  require_signed_commits          = true
   allows_force_pushes             = false
   allows_deletions                = false
 

@@ -8,6 +8,8 @@ terraform {
   backend "s3" {
     key = "github/terraform.tfstate"
   }
+
+  required_version = "~>1.6.0"
 }
 
 provider "github" {}

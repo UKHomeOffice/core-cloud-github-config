@@ -10,3 +10,13 @@ updates:
       - "UKHomeOffice/core-cloud-devops"
     labels:
       - "dependencies"
+  - package-ecosystem: "terraform"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "(TF)"
+    reviewers:
+      - "UKHomeOffice/core-cloud-devops"
+    labels:
+      - "dependencies"

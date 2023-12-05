@@ -1,19 +1,9 @@
 locals {
-  default_repo = {
-    branch_protection = {
-      required_approving_review_count = 2
-    }
-  }
-
-  repository_config = {
+  repositories = {
     "core-cloud" = {
       visibility   = "public"
       description  = "SAS Core Cloud Documentation"
       homepage_url = "https://ukhomeoffice.github.io/core-cloud/"
-
-      branch_protection = {
-        required_approving_review_count = 1
-      }
     },
     "core-cloud-lza-config" = {
       visibility  = "internal"
@@ -23,11 +13,6 @@ locals {
       visibility  = "public"
       description = "GitHub repository configuration for Core Cloud repositories"
     }
-  }
-
-  # Sets the default of specific values if the object key is not set.
-  repositories = {
-    for k, v in local.repository_config : k => merge(local.default_repo, v)
   }
 }
 
@@ -84,7 +69,7 @@ resource "github_branch_protection" "main" {
 
   required_pull_request_reviews {
     require_last_push_approval      = true
-    required_approving_review_count = local.repositories[each.key].branch_protection.required_approving_review_count
+    required_approving_review_count = 1
   }
 }
 

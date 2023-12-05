@@ -82,9 +82,10 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
 
   allowed_actions_config {
     github_owned_allowed = true
-    verified_allowed     = true
+    verified_allowed     = false
     patterns_allowed = [
-      "aws-actions/*"
+      "aws-actions/*",
+      "hashicorp/*"
     ]
   }
 }

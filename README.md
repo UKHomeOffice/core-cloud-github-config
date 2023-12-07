@@ -21,3 +21,8 @@ repositories object.
 
 > Visibility can be one of `public`, `private`, or `internal`. It does not have a default value and must be set on each 
 > repository.
+
+### Terraform State
+
+The state file for this repository is stored in S3.
+The cloudformation stack for this is located in the [supplementary folder of the LZA config](https://github.com/UKHomeOffice/core-cloud-lza-config/blob/main/supplementary/cloudformation-terraform-s3.yaml) 🔒.

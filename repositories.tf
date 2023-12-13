@@ -12,6 +12,10 @@ locals {
     "core-cloud-github-config" = {
       visibility  = "public"
       description = "GitHub repository configuration for Core Cloud repositories"
+    },
+    "core-cloud-add-customer-action" = {
+      visibility  = "public"
+      description = "GitHub Action to add a customer to the Core Cloud LZA config"
     }
   }
 }

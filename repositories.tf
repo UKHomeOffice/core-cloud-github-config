@@ -16,6 +16,14 @@ locals {
     "core-cloud-add-customer-action" = {
       visibility  = "public"
       description = "GitHub Action to add a customer to the Core Cloud LZA config"
+
+      checks = [
+        "Check Transpiled JavaScript",
+        "CodeQL",
+        "Continuous Integration",
+        "Lint Codebase",
+        "PR Checker",
+      ]
     }
   }
 }
@@ -83,6 +91,11 @@ resource "github_branch_protection" "main" {
   required_pull_request_reviews {
     require_last_push_approval      = true
     required_approving_review_count = 1
+  }
+
+  required_status_checks {
+    strict   = true
+    contexts = try(each.value.checks, [])
   }
 
   lifecycle {

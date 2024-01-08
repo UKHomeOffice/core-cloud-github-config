@@ -18,11 +18,12 @@ locals {
       description = "GitHub Action to add a customer to the Core Cloud LZA config"
 
       checks = [
-        "Check Transpiled JavaScript",
         "CodeQL",
-        "Continuous Integration",
+        "Check dist/",
+        "GitHub Actions Test",
         "Lint Codebase",
-        "PR Checker"
+        "Semver Check PR Label",
+        "TypeScript Tests"
       ]
     }
   }

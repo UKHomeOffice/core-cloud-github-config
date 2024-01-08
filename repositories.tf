@@ -22,7 +22,7 @@ locals {
         "CodeQL",
         "Continuous Integration",
         "Lint Codebase",
-        "PR Checker",
+        "PR Checker"
       ]
     }
   }
@@ -95,7 +95,7 @@ resource "github_branch_protection" "main" {
 
   required_status_checks {
     strict   = true
-    contexts = try(each.value.checks, [])
+    contexts = try(local.repositories[each.value.name].checks, [])
   }
 
   lifecycle {

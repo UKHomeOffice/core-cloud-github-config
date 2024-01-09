@@ -6,8 +6,9 @@ locals {
       homepage_url = "https://ukhomeoffice.github.io/core-cloud/"
     },
     "core-cloud-lza-config" = {
-      visibility  = "internal"
-      description = "SAS Core Cloud LZA Config"
+      visibility                    = "internal"
+      description                   = "SAS Core Cloud LZA Config"
+      include_pull_request_template = true
     },
     "core-cloud-github-config" = {
       visibility  = "public"
@@ -126,15 +127,15 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
 }
 
 resource "github_repository_file" "core_cloud_repositories" {
-  for_each   = github_repository.core_cloud_repositories
 
-  repository        = each.key
-  branch            = "main"
-  file              = ".github/pull_request_template.md"
-  content           = "I have:
+  for_each = {
+    for key, value in github_repository.core_cloud_repositories : key => value
+    if try(local.repositories[value.name].include_pull_request_template, false) == true
+  }
 
-                       - [ ] Validated that any resources created match the agreed naming convention. https://collaboration.homeoffice.gov.uk/display/CORE/Naming+Convention"
-  commit_message    = "PR Template is managed by Terraform via the core-cloud-github-config repository"
+  repository     = each.key
+  branch         = "main"
+  file           = ".github/pull_request_template.md"
+  content        = file("./templates/pull_request_template.md")
+  commit_message = "PR Template is managed by Terraform via the core-cloud-github-config repository"
 }
-
-

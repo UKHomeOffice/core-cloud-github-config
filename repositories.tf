@@ -124,3 +124,14 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
     prevent_destroy = true
   }
 }
+
+resource "github_repository_file" "core_cloud_repositories" {
+  for_each   = github_repository.core_cloud_repositories
+
+  repository        = each.key
+  branch            = "main"
+  file              = ".github/pull_request_template.md"
+  content           = ".github/pr_template.md"
+  commit_message    = "PR Template is managed by Terraform via the core-cloud-github-config repository"
+
+

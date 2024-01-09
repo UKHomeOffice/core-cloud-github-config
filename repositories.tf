@@ -118,7 +118,9 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
     verified_allowed     = false
     patterns_allowed = [
       "aws-actions/*",
-      "hashicorp/*"
+      "hashicorp/*",
+      "slackapi/*",
+      "super-linter/super-linter/*"
     ]
   }
 

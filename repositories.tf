@@ -22,7 +22,7 @@ locals {
         "Check dist/",
         "GitHub Actions Test",
         "Lint Codebase",
-        "Semver Check PR Label",
+        "Semver Check PR Label / Calculate SemVer Value",
         "TypeScript Tests"
       ]
     }

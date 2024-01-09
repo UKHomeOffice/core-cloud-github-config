@@ -11,8 +11,9 @@ locals {
       include_pull_request_template = true
     },
     "core-cloud-github-config" = {
-      visibility  = "public"
-      description = "GitHub repository configuration for Core Cloud repositories"
+      visibility                    = "public"
+      description                   = "GitHub repository configuration for Core Cloud repositories"
+      include_pull_request_template = true
     },
     "core-cloud-add-customer-action" = {
       visibility  = "public"
@@ -127,7 +128,6 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
 }
 
 resource "github_repository_file" "core_cloud_repositories" {
-
   for_each = {
     for key, value in github_repository.core_cloud_repositories : key => value
     if try(local.repositories[value.name].include_pull_request_template, false) == true

@@ -131,7 +131,9 @@ resource "github_repository_file" "core_cloud_repositories" {
   repository        = each.key
   branch            = "main"
   file              = ".github/pull_request_template.md"
-  content           = ".github/pr_template.md"
+  content           = "I have:
+
+                       - [ ] Validated that any resources created match the agreed naming convention. https://collaboration.homeoffice.gov.uk/display/CORE/Naming+Convention"
   commit_message    = "PR Template is managed by Terraform via the core-cloud-github-config repository"
 }
 

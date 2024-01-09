@@ -133,5 +133,6 @@ resource "github_repository_file" "core_cloud_repositories" {
   file              = ".github/pull_request_template.md"
   content           = ".github/pr_template.md"
   commit_message    = "PR Template is managed by Terraform via the core-cloud-github-config repository"
+}
 
 

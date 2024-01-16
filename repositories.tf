@@ -136,7 +136,7 @@ resource "github_repository_file" "core_cloud_repositories" {
   }
 
   repository     = each.key
-  branch         = "main"
+  branch         = "Update Pull Request Template"
   file           = ".github/pull_request_template.md"
   content        = file("./templates/pull_request_template.md")
   commit_message = "PR Template is managed by Terraform via the core-cloud-github-config repository"

@@ -141,5 +141,5 @@ resource "github_repository_file" "core_cloud_repositories" {
   content        = file("./templates/pull_request_template.md")
   commit_message = "PR Template is managed by Terraform via the core-cloud-github-config repository"
   commit_author  = "Daniel Palmer"
-  commit_email	 = "daniel.palmer@digital.homeoffice.gov.uk"
+  commit_email   = "daniel.palmer@digital.homeoffice.gov.uk"
 }

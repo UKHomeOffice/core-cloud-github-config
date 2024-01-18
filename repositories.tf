@@ -128,3 +128,4 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
     prevent_destroy = true
   }
 }
+

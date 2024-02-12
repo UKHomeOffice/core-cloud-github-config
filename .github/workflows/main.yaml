@@ -46,3 +46,33 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
+
+      - name: Post failure to Slack channel
+        uses: slackapi/slack-github-action@v1
+        if: failure()
+        with:
+          channel-id: ${{ vars.SLACK_CHANNEL_ID }}
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Applying terraform from <https://github.com/UKHomeOffice/core-cloud-github-config|core-cloud-github-config> failed.\n\n Run ID: ${{ github.run_id }}-${{ github.run_number }}\nCommit SHA: ${{ github.sha }}"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Got To Job"
+                    },
+                    "value": "button_value",
+                    "url": "https://github.com/UKHomeOffice/core-cloud-github-config/actions/runs/${{github.run_id}}/attempts/${{github.run_number}}",
+                    "action_id": "button-action"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

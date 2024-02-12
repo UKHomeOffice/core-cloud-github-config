@@ -65,7 +65,7 @@ jobs:
                     "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": "Got To Job"
+                      "text": "Go to Job"
                     },
                     "value": "button_value",
                     "url": "https://github.com/UKHomeOffice/core-cloud-github-config/actions/runs/${{github.run_id}}/attempts/${{github.run_number}}",

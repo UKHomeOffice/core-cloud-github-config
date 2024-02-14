@@ -27,6 +27,36 @@ locals {
         "Semver Check PR Label / Calculate SemVer Value",
         "TypeScript Tests"
       ]
+    },
+    "semver-calculate-action" = {
+      visibility  = "public"
+      description = "GitHub Action that increments SemVer values"
+
+      checks = [
+        "check / Calculate SemVer Value",
+        "diff / Diff Dist (20.x)",
+        "test / Unit and Integration Tests (20.x)",
+      ]
+    },
+    "semver-tag-action" = {
+      visibility  = "public"
+      description = "GitHub Action that increments and tags SemVer"
+
+      checks = [
+        "check / Calculate SemVer Value",
+        "diff / Diff Dist (20.x)",
+        "test / Unit and Integration Tests (20.x)",
+      ]
+    },
+    "match-label-action" = {
+      visibility  = "public"
+      description = "GitHub action that supports the enforcing of labels on Pull Requests"
+
+      checks = [
+        "check / Calculate SemVer Value",
+        "diff / Diff Dist (20.x)",
+        "test / Unit and Integration Tests (20.x)",
+      ]
     }
   }
 }
@@ -128,4 +158,3 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
     prevent_destroy = true
   }
 }
-

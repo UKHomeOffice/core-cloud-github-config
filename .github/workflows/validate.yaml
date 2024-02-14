@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_OWNER: ukhomeoffice
-      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
+      GITHUB_APP_INSTALLATION_ID: ${{ secrets.GH_APP_INSTALLATION_ID }}
+      GITHUB_APP_PEM_FILE: ${{ secrets.GH_APP_PEM_FILE }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

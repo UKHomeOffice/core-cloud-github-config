@@ -132,7 +132,7 @@ resource "github_branch_protection" "main" {
   }
 
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
 }
 

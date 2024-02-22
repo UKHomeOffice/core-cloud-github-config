@@ -28,6 +28,10 @@ locals {
         "TypeScript Tests"
       ]
     },
+    "core-cloud-lza-iam-terraform" = {
+      visibility  = "internal"
+      description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
+    },
     "semver-calculate-action" = {
       visibility  = "public"
       description = "GitHub Action that increments SemVer values"
@@ -146,7 +150,7 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
   allowed_actions_config {
     github_owned_allowed = true
     verified_allowed     = false
-    patterns_allowed = [
+    patterns_allowed     = [
       "aws-actions/*",
       "hashicorp/*",
       "slackapi/*",

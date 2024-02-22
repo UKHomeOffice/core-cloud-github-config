@@ -28,6 +28,10 @@ locals {
         "TypeScript Tests"
       ]
     },
+    "core-cloud-lza-iam-terraform" = {
+      visibility  = "internal"
+      description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
+    },
     "semver-calculate-action" = {
       visibility  = "public"
       description = "GitHub Action that increments SemVer values"

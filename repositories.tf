@@ -154,7 +154,8 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
       "aws-actions/*",
       "hashicorp/*",
       "slackapi/*",
-      "super-linter/super-linter/*"
+      "super-linter/super-linter/*",
+      "aquasecurity/*",
     ]
   }
 

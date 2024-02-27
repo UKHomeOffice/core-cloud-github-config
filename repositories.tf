@@ -32,6 +32,10 @@ locals {
       visibility  = "internal"
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
     },
+    "core-cloud-terraform-modules" = {
+      visibility  = "internal"
+      description = "Repository for Terraform modules used by the Core Cloud team"
+    },
     "semver-calculate-action" = {
       visibility  = "public"
       description = "GitHub Action that increments SemVer values"

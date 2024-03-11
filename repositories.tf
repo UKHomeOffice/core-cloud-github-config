@@ -37,7 +37,7 @@ locals {
       description = "Terraform module for creating and handling platform specific Identity Center groups, users, permission sets, assignments, and memberships"
     },
     "core-cloud-terraform-modules" = {
-      visibility  = "internal"
+      visibility  = "public"
       description = "Repository for Terraform modules used by the Core Cloud team"
     },
     "semver-calculate-action" = {

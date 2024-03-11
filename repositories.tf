@@ -164,7 +164,7 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
       "slackapi/*",
       "super-linter/super-linter/*",
       "aquasecurity/*",
-      "dorny/paths-filter/*"
+      "dorny/paths-filter@v*"
     ]
   }
 

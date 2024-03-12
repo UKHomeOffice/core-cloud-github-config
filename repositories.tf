@@ -31,6 +31,12 @@ locals {
     "core-cloud-lza-iam-terraform" = {
       visibility  = "internal"
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
+
+      checks = [
+        "Run Terraform SAST",
+        "Validate Terraform (Dev) / Assert Environment Directory",
+        "Validate Terraform (Dev) / Plan and optionally Apply Environment Terraform"
+      ]
     },
     "core-cloud-lza-platform-iam-terraform" = {
       visibility  = "internal"

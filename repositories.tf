@@ -34,8 +34,7 @@ locals {
 
       checks = [
         "Run Terraform SAST",
-        "Validate Terraform (Dev) / Assert Environment Directory",
-        "Validate Terraform (Dev) / Plan and optionally Apply Environment Terraform"
+        "Validate Terraform (Dev)"
       ]
     },
     "core-cloud-lza-platform-iam-terraform" = {

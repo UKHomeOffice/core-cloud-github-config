@@ -14,6 +14,10 @@ locals {
       visibility                    = "public"
       description                   = "GitHub repository configuration for Core Cloud repositories"
       include_pull_request_template = true
+
+      checks = [
+        "Validate Terraform"
+      ]
     },
     "core-cloud-add-customer-action" = {
       visibility  = "public"

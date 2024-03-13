@@ -32,6 +32,10 @@ locals {
         "TypeScript Tests"
       ]
     },
+    "core-cloud-github-status-check-action" = {
+      visibility  = "public"
+      description = "GitHub Action to update the status of a GitHub commit"
+    },
     "core-cloud-lza-iam-terraform" = {
       visibility  = "internal"
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"

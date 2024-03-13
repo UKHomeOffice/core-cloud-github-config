@@ -55,14 +55,14 @@ locals {
       ]
     },
     "core-cloud-management-account-bootstrap" = {
-          visibility  = "internal"
-          description = "Terraform module for creating and handling resources required to bootstrap the Management account."
+      visibility  = "internal"
+      description = "Terraform module for creating and handling resources required to bootstrap the Management account."
 
-          checks = [
-            "Run Terraform SAST",
-            "Validate Terraform (Dev)"
-          ]
-        },
+      checks = [
+        "Run Terraform SAST",
+        "Validate Terraform (Dev)"
+      ]
+    },
     "core-cloud-terraform-modules" = {
       visibility  = "public"
       description = "Repository for Terraform modules used by the Core Cloud team"

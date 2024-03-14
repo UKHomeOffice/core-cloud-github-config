@@ -54,13 +54,12 @@ locals {
         "Validate Terraform (Dev)"
       ]
     },
-    "core-cloud-management-account-bootstrap" = {
+    "core-cloud-lza-management-bootstrap" = {
       visibility  = "internal"
-      description = "Terraform module for creating and handling resources required to bootstrap the Management account."
+      description = "Terraform for creating and managing additional resources within the Management account."
 
       checks = [
-        "Run Terraform SAST",
-        "Validate Terraform (Dev)"
+        "Run Terraform SAST"
       ]
     },
     "core-cloud-terraform-modules" = {

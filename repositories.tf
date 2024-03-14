@@ -9,6 +9,10 @@ locals {
       visibility                    = "internal"
       description                   = "SAS Core Cloud LZA Config"
       include_pull_request_template = true
+
+      checks = [
+        "Check PR for SemVer Label"
+      ]
     },
     "core-cloud-github-config" = {
       visibility                    = "public"

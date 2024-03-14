@@ -54,6 +54,14 @@ locals {
         "Validate Terraform (Dev)"
       ]
     },
+    "core-cloud-lza-management-bootstrap" = {
+      visibility  = "internal"
+      description = "Terraform for creating and managing additional resources within the Management account."
+
+      checks = [
+        "Run Terraform SAST"
+      ]
+    },
     "core-cloud-terraform-modules" = {
       visibility  = "public"
       description = "Repository for Terraform modules used by the Core Cloud team"

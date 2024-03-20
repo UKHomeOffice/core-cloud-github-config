@@ -45,7 +45,9 @@ locals {
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
 
       checks = [
-        "Run Terraform SAST"
+        "Run Terraform SAST",
+        "Validate Terraform (Dev)",
+        "Validate Terraform (Prod)"
       ]
     },
     "core-cloud-lza-platform-iam-terraform" = {
@@ -54,7 +56,8 @@ locals {
 
       checks = [
         "Run Terraform SAST",
-        "Validate Terraform (Dev)"
+        "Validate Terraform (Dev)",
+        "Validate Terraform (Prod)"
       ]
     },
     "core-cloud-lza-management-bootstrap" = {

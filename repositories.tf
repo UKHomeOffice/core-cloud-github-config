@@ -39,6 +39,15 @@ locals {
     "core-cloud-github-status-check-action" = {
       visibility  = "public"
       description = "GitHub Action to update the status of a GitHub commit"
+
+      checks = [
+        "CodeQL",
+        "Check PR for SemVer Label",
+        "Check dist/",
+        "GitHub Actions Test",
+        "Lint Codebase",
+        "TypeScript Tests"
+      ]
     },
     "core-cloud-lza-iam-terraform" = {
       visibility  = "internal"
@@ -71,6 +80,10 @@ locals {
     "core-cloud-terraform-modules" = {
       visibility  = "public"
       description = "Repository for Terraform modules used by the Core Cloud team"
+
+      checks = [
+        "Run Terraform SAST"
+      ]
     },
     "semver-calculate-action" = {
       visibility  = "public"

@@ -49,6 +49,17 @@ locals {
         "TypeScript Tests"
       ]
     },
+    "core-cloud-iam" = {
+      visibility  = "internal"
+      description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
+
+      checks = [
+        "Scan Terraform Config",
+        "Scan Terraform Plans",
+        "Validate Terraform",
+        "Terraform Plans",
+      ]
+    },
     "core-cloud-lza-iam-terraform" = {
       visibility  = "internal"
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"

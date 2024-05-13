@@ -54,9 +54,9 @@ locals {
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
 
       checks = [
-        "Scan Terraform Config",
+        "Scan Terraform Config (pull_request)",
         "Scan Terraform Plans",
-        "Validate Terraform",
+        "Validate Terraform (pull_request)",
         "Terraform Plans",
       ]
     },

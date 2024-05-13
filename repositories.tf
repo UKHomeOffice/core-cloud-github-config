@@ -220,7 +220,8 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
       "slackapi/*",
       "super-linter/super-linter/*",
       "aquasecurity/*",
-      "dorny/paths-filter@v*"
+      "dorny/paths-filter@v*",
+      "octokit/request-action@v*"
     ]
   }
 

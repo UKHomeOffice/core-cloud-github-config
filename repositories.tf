@@ -14,6 +14,15 @@ locals {
         "Check PR for SemVer Label"
       ]
     },
+    "core-cloud-test-repo" = {
+      visibility                    = "private"
+      description                   = "Core Cloud Test Repo"
+      include_pull_request_template = true
+
+      checks = [
+        "Check PR for SemVer Label"
+      ]
+    },
     "core-cloud-github-config" = {
       visibility                    = "public"
       description                   = "GitHub repository configuration for Core Cloud repositories"
@@ -61,6 +70,7 @@ locals {
     "core-cloud-lza-iam-terraform" = {
       visibility  = "internal"
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"
+      archived    = "true"
 
       checks = [
         "Run Terraform SAST",
@@ -71,6 +81,7 @@ locals {
     "core-cloud-lza-platform-iam-terraform" = {
       visibility  = "internal"
       description = "Terraform module for creating and handling platform specific Identity Center groups, users, permission sets, assignments, and memberships"
+      archived    = "true"
 
       checks = [
         "Run Terraform SAST",
@@ -143,6 +154,7 @@ resource "github_repository" "core_cloud_repositories" {
   allow_auto_merge       = true
   delete_branch_on_merge = true
   homepage_url           = try(each.value.homepage_url, null)
+  archived               = try(each.value.archived, null)
 
   lifecycle {
     prevent_destroy = true

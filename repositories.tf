@@ -134,6 +134,15 @@ locals {
         "diff / Diff Dist (20.x)",
         "test / Unit and Integration Tests (20.x)",
       ]
+    },
+    "core-cloud-static-site-terragrunt" = {
+      visibility  = "internal"
+      description = "Terragrunt module for creating static sites"
+
+      checks = [
+        "Terraform Plans Result",
+        "Scan Terraform Config",
+      ]
     }
   }
 }

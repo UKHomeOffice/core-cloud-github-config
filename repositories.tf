@@ -240,7 +240,8 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
       "super-linter/super-linter/*",
       "aquasecurity/*",
       "dorny/paths-filter@v*",
-      "octokit/request-action@v*"
+      "octokit/request-action@v*",
+      "gruntwork-io/terragrunt-action@v*"
     ]
   }
 

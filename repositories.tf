@@ -67,6 +67,15 @@ locals {
         "Scan Terraform Config",
       ]
     },
+    "core-cloud-dns-bootstrap" = {
+      visibility  = "internal"
+      description = "Terraform module to bootstrap public DNS Routing (Proof of Concept)"
+
+      checks = [
+        "Terraform Plans Result",
+        "Scan Terraform Config",
+      ]
+    },
     "core-cloud-lza-iam-terraform" = {
       visibility  = "internal"
       description = "Terraform module for creating and handling Identity Center groups, users, permission sets, assignments, and memberships"

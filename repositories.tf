@@ -196,6 +196,18 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
   }
 }
 
+# Add explicit write permission for code owners for branch protection via CODEOWNERS file
+resource "github_team_repository" "core_cloud_code_owners_team_repositories" {
+  for_each   = github_repository.core_cloud_repositories
+  repository = each.key
+  team_id    = github_team.core_cloud_code_owners.id
+  permission = "write"
+
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
 resource "github_branch_protection" "main" {
   for_each      = github_repository.core_cloud_repositories
   repository_id = each.key
@@ -211,6 +223,7 @@ resource "github_branch_protection" "main" {
   required_pull_request_reviews {
     require_last_push_approval      = true
     required_approving_review_count = 1
+    require_code_owner_reviews      = true
   }
 
   required_status_checks {

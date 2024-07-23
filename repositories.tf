@@ -172,7 +172,7 @@ resource "github_repository" "core_cloud_repositories" {
   allow_auto_merge       = true
   delete_branch_on_merge = true
   homepage_url           = try(each.value.homepage_url, null)
-  archived               = try(each.value.archived, null)
+  archived               = try(each.value.archived, false)
 
   lifecycle {
     prevent_destroy = true
@@ -205,18 +205,6 @@ resource "github_team_repository" "core_cloud_devops_team_repositories" {
   }
 }
 
-# Add explicit write permission for code owners for branch protection via CODEOWNERS file
-resource "github_team_repository" "core_cloud_code_owners_team_repositories" {
-  for_each   = github_repository.core_cloud_repositories
-  repository = each.key
-  team_id    = github_team.core_cloud_code_owners.id
-  permission = "write"
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
-
 resource "github_branch_protection" "main" {
   for_each      = github_repository.core_cloud_repositories
   repository_id = each.key
@@ -232,7 +220,6 @@ resource "github_branch_protection" "main" {
   required_pull_request_reviews {
     require_last_push_approval      = true
     required_approving_review_count = 1
-    require_code_owner_reviews      = true
   }
 
   required_status_checks {

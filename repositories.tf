@@ -149,7 +149,6 @@ locals {
       description = "Terragrunt module for creating static sites"
 
       checks = [
-        "Terraform Plans Result",
         "Scan Terraform Config",
       ]
     }

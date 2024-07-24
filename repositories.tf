@@ -152,6 +152,14 @@ locals {
         "Scan Terraform Config",
       ]
     }
+    "core-cloud-lza-validator" = {
+      visibility  = "public"
+      description = "Docker image for validating LZA config"
+
+      checks = [
+
+      ]
+    }
   }
 }
 

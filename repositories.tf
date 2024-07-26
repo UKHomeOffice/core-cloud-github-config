@@ -257,7 +257,8 @@ resource "github_actions_repository_permissions" "core_cloud_repositories" {
       "aquasecurity/*",
       "dorny/paths-filter@v*",
       "octokit/request-action@v*",
-      "gruntwork-io/terragrunt-action@v*"
+      "gruntwork-io/terragrunt-action@v*",
+      "docker/*"
     ]
   }
 

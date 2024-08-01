@@ -160,6 +160,13 @@ locals {
 
       ]
     }
+    "core-cloud-s3-sync-action" = {
+      visibility  = "public"
+      description = "Github action that synchronises a directory to a s3 bucket"
+
+      checks = [
+      ]
+    }
   }
 }
 

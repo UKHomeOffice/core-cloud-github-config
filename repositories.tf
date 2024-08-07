@@ -173,6 +173,20 @@ locals {
 
       checks = [
       ]
+    },
+    "core-cloud-staticsitetest-test-site" = {
+      visibility  = "internal"
+      description = "For platform development work of the static site product in the test environment"
+
+      checks = [
+      ]
+    },
+    "core-cloud-staticsiteprelive-prelive-site" = {
+      visibility  = "internal"
+      description = "For platform development work of the static site product in the prelive environment"
+
+      checks = [
+      ]
     }
   }
 }

@@ -166,13 +166,6 @@ locals {
 
       checks = [
       ]
-    }
-    "core-cloud-static-site-tenant-test" = {
-      visibility  = "private"
-      description = "For testing oidc & github actions for tenant static site "
-
-      checks = [
-      ]
     },
     "core-cloud-staticsitetest-test-site" = {
       visibility  = "internal"
